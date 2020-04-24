@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.tracefirst.com/standards"
+    xmlns="http://www.tracefirst.com/standards">
+
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:element name="Sighting">
+        <xs:annotation>
+            <xs:documentation>This is used to describe the sighting or observation of an animal at a location at a point in time.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="AnimalTag" type="AnimalTagType"/>
+                <xs:element name="Timestamp" type="TimestampType"/>
+                <xs:element name="Location" type="LocationType"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="MessageHeaders"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

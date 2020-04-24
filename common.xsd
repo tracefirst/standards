@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.tracefirst.com/standards"
+    xmlns="http://www.tracefirst.com/standards"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:complexType name="AnimalTagType">
+        <xs:choice>
+            <xs:element name="AINTag" type="AINtagType"/>
+            <xs:element name="NUESTag" type="NUEStagType"/>
+            <xs:element name="OtherTag">
+                <xs:annotation>
+                    <xs:documentation>You should only use this option if you know that the string you are passing is an animal tag number and you are certain it is not one of the specific tag types this schema allows.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="40"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AnimalName">
+                <xs:annotation>
+                    <xs:documentation>You should only use this option if you know that the string you are passing is an animal's name. Specifically, you should never use this option if you know the string you are passing is a tag number.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="240"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+    <xs:simpleType name="AINtagType">
+        <xs:annotation>
+            <xs:documentation>Generally refered to as RFID or AIN tags</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{15}"/>
+            <xs:length value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NUEStagType">
+        <xs:annotation>
+            <xs:documentation>The National Uniform Eartagging System (NUES) is a numbering system for official eartags used for many years in specific animal disease programs. The NUES has been used primarily for metal brucellosis vaccination eartags, “brite” metal identification eartags, and Dairy Herd Information Association (DHIA)
+eartags.</xs:documentation>
+            <xs:documentation>See https://www.aphis.usda.gov/traceability/downloads/ADT_device_nues.pdf for more information</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="8"/>
+            <xs:maxLength value="9"/>
+            <xs:pattern value="[0-9]{2}[A-Z]{2,3}[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NatlPremIdType">
+        <xs:restriction base="xs:string">
+            <xs:length value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="USStateType">
+        <xs:restriction base="xs:string">
+            <xs:length value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SendingSystemType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9_]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TimestampType">
+        <xs:annotation>
+            <xs:documentation>Send the most precise data you have</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element name="Date" type="xs:date"/>
+            <xs:element name="DateTime" type="xs:dateTime"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="LocationType">
+        <xs:sequence>
+            <xs:element name="NatlPremisesID" type="NatlPremIdType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:attributeGroup name="MessageHeaders">
+        <xs:attribute name="State" type="USStateType" use="required"/>
+        <xs:attribute name="SendingSystem" type="SendingSystemType" use="required"/>
+        <xs:attribute name="SendingSystemRefStr" type="xs:string"/>
+        <xs:attribute name="SendingSystemRefInt" type="xs:integer"/>
+    </xs:attributeGroup>
+</xs:schema>

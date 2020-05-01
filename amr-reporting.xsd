@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.tracefirst.com/standards"
+    xmlns="http://www.tracefirst.com/standards" version="0.1">
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:element name="AMRReport" type="AMRReportType"/>
+	<xs:complexType name="AMRReportType">
+		<xs:sequence>
+			<xs:element name="specimen" maxOccurs="unbounded" type="specimenType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="MessageHeaders"/>
+		<xs:attribute name="laboratoryName" type="laboratoryNameType" use="required"/>
+		<xs:attribute name="programName" type="programNameType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="specimenType">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="AMRResult" type="AMRResultType">
+			</xs:element>
+			<xs:element name="testDate" type="TimestampType"/>
+			<xs:element name="isolationDate" type="TimestampType"/>
+		</xs:sequence>
+		<xs:attribute name="animalOriginState" type="USStateType" use="required"/>
+		<xs:attribute name="animalSpecies" use="required" type="animalSpeciesType">
+		</xs:attribute>
+		<xs:attribute name="sourceTissue" type="sourceTissueType" use="required"/>
+		<xs:attribute name="organismIsolated" type="organismIsolatedType"
+			use="required"/>
+		<xs:attribute name="finalDiagnosis" type="finalDiagnosisType" use="required"/>
+		<xs:attribute name="TestRefStr" type="xs:string"/>
+		<xs:attribute name="TestRefInt" type="xs:integer"/>
+	</xs:complexType>
+	<xs:complexType name="AMRResultType">
+		<xs:attribute name="antibiotic" type="antibioticType"
+			use="required"/>
+		<xs:attribute name="MICValue" type="MICValueType" use="required"/>
+		<xs:attribute name="MICModifier" type="MICModifierType"/>
+		<xs:attribute name="interpretation" type="MICInterpretationType"
+			use="required"> </xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="animalSpeciesType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Cattle"/>
+			<xs:enumeration value="Swine"/>
+			<xs:enumeration value="Poultry-domestic chicken"/>
+			<xs:enumeration value="Poultry-domestic turkey"/>
+			<xs:enumeration value="Poultry-domestic ducks"/>
+			<xs:enumeration value="Equine"/>
+			<xs:enumeration value="Dog"/>
+			<xs:enumeration value="Cat"/>
+		</xs:restriction>
+	</xs:simpleType>
+    <xs:simpleType name="sourceTissueType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Feces"/>
+            <xs:enumeration value="Urine"/>
+            <xs:enumeration value="Skin"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MICInterpretationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="NI"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="organismIsolatedType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Streptococcus suis"/>
+            <xs:enumeration value="Escherichia coli"/>
+            <xs:enumeration value="Salmonella enterica"/>
+            <xs:enumeration value="Mannheimia haemolytica"/>
+            <xs:enumeration value="Staphylococcus intermedius group"/>
+            <xs:enumeration value="Staphylococcus intermedius"/>
+            <xs:enumeration value="Staphylococcus pseudintermedius"/>
+            <xs:enumeration value="Staphylococcus delphini"/>
+            <xs:enumeration value="Pasteurella multocida"/>
+            <xs:enumeration value="Escherichia coli"/>
+            <xs:enumeration value="Streptococcus equi"/>
+            <xs:enumeration value="Streptococcus zooepidemicus"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="finalDiagnosisType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Cystitis"/>
+            <xs:enumeration value="Dermatitis"/>
+            <xs:enumeration value="Enteritis"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="antibioticType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Amikacin"/>
+            <xs:enumeration value="Amoxicillin/Clavulanic acid"/>
+            <xs:enumeration value="Ampicillin"/>
+            <xs:enumeration value="Cefazolin"/>
+            <xs:enumeration value="Cefovecin"/>
+            <xs:enumeration value="Cefpodoxime"/>
+            <xs:enumeration value="Ceftazidime"/>
+            <xs:enumeration value="Cephalexin"/>
+            <xs:enumeration value="Chloramphenicol"/>
+            <xs:enumeration value="Doxycycline"/>
+            <xs:enumeration value="Enrofloxacin"/>
+            <xs:enumeration value="Gentamicin"/>
+            <xs:enumeration value="Imipenem"/>
+            <xs:enumeration value="Marbofloxacin"/>
+            <xs:enumeration value="Orbifloxacin"/>
+            <xs:enumeration value="Piperacillin/Tazobactam"/>
+            <xs:enumeration value="Pradofloxacin"/>
+            <xs:enumeration value="Tetracycline"/>
+            <xs:enumeration value="Trimethoprim/Sulfamethoxazole"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MICValueType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MICModifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="&lt;="/>
+            <xs:enumeration value=">"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="programNameType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NAHLN AMR Pilot Project"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="laboratoryNameType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Bacteriology &amp; Mycology Diagnostic Laboratory"/>
+            <xs:enumeration value="California Animal Health &amp; Food Safety Laboratory System"/>
+            <xs:enumeration value="Colorado State University Veterinary Diagnostic Laboratory"/>
+            <xs:enumeration value="Bronson Animal Disease Diagnostic Laboratory"/>
+            <xs:enumeration value="Athens Veterinary Diagnostic Laboratory"/>
+            <xs:enumeration value="Indiana Animal Disease Diagnostic Laboratory"/>
+            <xs:enumeration value="Kansas State Veterinary Diagnostic Lab"/>
+            <xs:enumeration value="University of Kentucky, Veterinary Diagnostic Laboratory"/>
+            <xs:enumeration value="Louisiana Animal Disease Diagnostic Laboratory"/>
+            <xs:enumeration value="Michigan State University Veterinary Diagnostic Laboratory"/>
+            <xs:enumeration value="University of Minnesota Veterinary Diagnostic Laboratory"/>
+            <xs:enumeration value="University of Missouri Veterinary Medical Diagnostic Laboratory"/>
+            <xs:enumeration
+                value="Mississippi Veterinary Research &amp; Diagnostic Laboratory System"/>
+            <xs:enumeration value="Nebraska Veterinary Diagnostic Center"/>
+            <xs:enumeration value="Cornell University Animal Health Diagnostic Center"/>
+            <xs:enumeration value="North Dakota Veterinary Diagnostic Lab"/>
+            <xs:enumeration value="Animal Disease Diagnostic Laboratory"/>
+            <xs:enumeration value="PADLS-Pennsylvania Veterinary Laboratory"/>
+            <xs:enumeration
+                value="PADLS-University of Pennsylvania, School of Veterinary Medicine, New Bolton Center"/>
+            <xs:enumeration value="Animal Disease Research &amp; Diagnostics Laboratory"/>
+            <xs:enumeration value="Texas A&amp;M Veterinary Medical Diagnostic Laboratory"/>
+            <xs:enumeration value="Washington Animal Disease Diagnostic Laboratory"/>
+            <xs:enumeration value="Wisconsin Veterinary Diagnostic Laboratory"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

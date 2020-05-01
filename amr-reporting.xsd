@@ -22,6 +22,7 @@
                 <xs:documentation/>
             </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="reasonForSubmitting" type="reasonForSubmittingType" use="required"/>
         <xs:attribute name="programName" type="programNameType" use="required">
             <xs:annotation>
                 <xs:documentation/>
@@ -218,6 +219,14 @@ Wisconsin Veterinary Diagnostic Laboratory</xs:documentation>
             <xs:enumeration value="Texas A&amp;M Veterinary Medical Diagnostic Laboratory"/>
             <xs:enumeration value="Washington Animal Disease Diagnostic Laboratory"/>
             <xs:enumeration value="Wisconsin Veterinary Diagnostic Laboratory"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="reasonForSubmittingType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="General Diagnostics"/>
+            <xs:enumeration value="Health Monitoring"/>
+            <xs:enumeration value="Surveillance, National"/>
+            <xs:enumeration value="Surveillance, Outbreak"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

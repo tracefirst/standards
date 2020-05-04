@@ -3,53 +3,71 @@
     targetNamespace="http://www.tracefirst.com/standards"
     xmlns="http://www.tracefirst.com/standards" version="0.1">
     <xs:include schemaLocation="common.xsd"/>
-    <xs:element name="AMRReport" type="AMRReportType"/>
-	<xs:complexType name="AMRReportType">
-		<xs:sequence>
-			<xs:element name="specimen" maxOccurs="unbounded" type="specimenType"/>
-		</xs:sequence>
-		<xs:attributeGroup ref="MessageHeaders"/>
-		<xs:attribute name="laboratoryName" type="laboratoryNameType" use="required"/>
-		<xs:attribute name="programName" type="programNameType" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="specimenType">
-		<xs:sequence>
-			<xs:element maxOccurs="unbounded" name="AMRResult" type="AMRResultType">
-			</xs:element>
-			<xs:element name="testDate" type="TimestampType"/>
-			<xs:element name="isolationDate" type="TimestampType"/>
-		</xs:sequence>
-		<xs:attribute name="animalOriginState" type="USStateType" use="required"/>
-		<xs:attribute name="animalSpecies" use="required" type="animalSpeciesType">
-		</xs:attribute>
-		<xs:attribute name="sourceTissue" type="sourceTissueType" use="required"/>
-		<xs:attribute name="organismIsolated" type="organismIsolatedType"
-			use="required"/>
-		<xs:attribute name="finalDiagnosis" type="finalDiagnosisType" use="required"/>
-		<xs:attribute name="TestRefStr" type="xs:string"/>
-		<xs:attribute name="TestRefInt" type="xs:integer"/>
-	</xs:complexType>
-	<xs:complexType name="AMRResultType">
-		<xs:attribute name="antibiotic" type="antibioticType"
-			use="required"/>
-		<xs:attribute name="MICValue" type="MICValueType" use="required"/>
-		<xs:attribute name="MICModifier" type="MICModifierType"/>
-		<xs:attribute name="interpretation" type="MICInterpretationType"
-			use="required"> </xs:attribute>
-	</xs:complexType>
-	<xs:simpleType name="animalSpeciesType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Cattle"/>
-			<xs:enumeration value="Swine"/>
-			<xs:enumeration value="Poultry-domestic chicken"/>
-			<xs:enumeration value="Poultry-domestic turkey"/>
-			<xs:enumeration value="Poultry-domestic ducks"/>
-			<xs:enumeration value="Equine"/>
-			<xs:enumeration value="Dog"/>
-			<xs:enumeration value="Cat"/>
-		</xs:restriction>
-	</xs:simpleType>
+    <xs:element name="AMRReport" type="AMRReportType">
+        <xs:annotation>
+            <xs:documentation>This AMR reporting schema is based on the NAHLN AMR Pilot Surveillance Program reporting requirements.  Materials and Methods are found in the USDA APHIS VS National Animal Health Laboratory Network Antimicrobial Resistance Pilot Project Year 1 Report 2018, pg. 4.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="AMRReportType">
+        <xs:sequence>
+            <xs:element name="specimen" maxOccurs="unbounded" type="specimenType">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="MessageHeaders"/>
+        <xs:attribute name="laboratoryName" type="laboratoryNameType" use="required">
+            <xs:annotation>
+                <xs:documentation/>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="programName" type="programNameType" use="required">
+            <xs:annotation>
+                <xs:documentation/>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="specimenType">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="AMRResult" type="AMRResultType"> </xs:element>
+            <xs:element name="testDate" type="TimestampType"/>
+            <xs:element name="isolationDate" type="TimestampType"/>
+        </xs:sequence>
+        <xs:attribute name="animalOriginState" type="USStateType" use="required"/>
+        <xs:attribute name="animalSpecies" use="required" type="animalSpeciesType"> </xs:attribute>
+        <xs:attribute name="sourceTissue" type="sourceTissueType" use="required"/>
+        <xs:attribute name="organismIsolated" type="organismIsolatedType" use="required"/>
+        <xs:attribute name="finalDiagnosis" type="finalDiagnosisType" use="required"/>
+        <xs:attribute name="TestRefStr" type="xs:string"/>
+        <xs:attribute name="TestRefInt" type="xs:integer"/>
+    </xs:complexType>
+    <xs:complexType name="AMRResultType">
+        <xs:attribute name="antibiotic" type="antibioticType" use="required"/>
+        <xs:attribute name="MICValue" type="MICValueType" use="required"/>
+        <xs:attribute name="MICModifier" type="MICModifierType"/>
+        <xs:attribute name="interpretation" type="MICInterpretationType" use="required">
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="animalSpeciesType">
+        <xs:annotation>
+            <xs:documentation>The NAHLN AMR Pilot Surveillance Program accepts results for Cattle, Swine, Poultry, Horses, Dogs and Cats.  </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Cattle"/>
+            <xs:enumeration value="Swine"/>
+            <xs:enumeration value="Poultry-domestic chicken"/>
+            <xs:enumeration value="Poultry-domestic turkey"/>
+            <xs:enumeration value="Poultry-domestic ducks"/>
+            <xs:enumeration value="Equine"/>
+            <xs:enumeration value="Dog"/>
+            <xs:enumeration value="Cat"/>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="sourceTissueType">
+        <xs:annotation>
+            <xs:documentation>Epidemiological data collected inlcudes a specimen or source tissue the isolate was recovered from (for example, oropharyngeal swab, lung tissue or feces).</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Feces"/>
             <xs:enumeration value="Urine"/>
@@ -57,6 +75,9 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="MICInterpretationType">
+        <xs:annotation>
+            <xs:documentation>Susceptible, intermeditate and resistant interpretations are provided for only those antibiotics that have both pathogen specific and species specific clinical breakpoints established as reported in the Clinical Laboratory Standards Institute's 2018 Veterinary Standard VET08 (CLSI 2018, Performance Standards for Antimicrobial Disk and Dilution Susceptibility Tests for Bacteria Isolated from Animals. 4th ed.)</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="S"/>
             <xs:enumeration value="I"/>
@@ -65,6 +86,9 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="organismIsolatedType">
+        <xs:annotation>
+            <xs:documentation>Four pathogens are under surveillance dependent on the species they are isolated from (E. coli, Salmonella enterica spp., Manheimia haemolytica and Staphylococcus intermedius group).  Isolates are selected by particpating laboratories for inclusion in the pilot project based on the criteria that the isolates must be: 1) identified to the genus and species level and serotype level for Salmonella 2) associated with clinical disease or diagnostic findings 3)from unique animal sources (USDA APHIS VS, NAHLN AMR Pilot, Year 1 report, 2018) </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Streptococcus suis"/>
             <xs:enumeration value="Escherichia coli"/>
@@ -81,6 +105,9 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="finalDiagnosisType">
+        <xs:annotation>
+            <xs:documentation>Epidemiological data collected includes the clinical signs associated with the ssubmission or the final diagnosis associated with the case (for example diarrhea, sepsis, pneumonia, wound, cystitis).</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Cystitis"/>
             <xs:enumeration value="Dermatitis"/>
@@ -88,6 +115,15 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="antibioticType">
+        <xs:annotation>
+            <xs:documentation>Commercially available Sensititre microdilution plates are used for testing the selected organisms (USDA APHIS VS, NAHLN AMR Pilot, Year 1 report, 2018) Appropriate plates to test each species are used as follows:
+Cattle: E. coli BOPO6F or 7F; Salmonella BOPO6F or 7F; M. haemolytica BOPO6F or 7F
+Swine: E. coli BOPO6F or 7F; Salmonella BOPO6F or 7F
+Poultry: E. coli Avian 1F; Salmonella Avian 1F
+Horses: E. coli Equine 1F; Salmonella Equine 1F
+Cats: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1F
+Dogs: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1F</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Amikacin"/>
             <xs:enumeration value="Amoxicillin/Clavulanic acid"/>
@@ -122,11 +158,40 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="programNameType">
+        <xs:annotation>
+            <xs:documentation>National Animal Health Laboratory AMR Pilot Program</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="NAHLN AMR Pilot Project"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="laboratoryNameType">
+        <xs:annotation>
+            <xs:documentation>There are currently 23 laboratories participating in the pilot
+Alabama Bacteriology &amp; Mycology Diagnostic Laboratory
+California Animal Health &amp; Food Safety Laboratory System
+Colorado State University Veterinary Diagnostic Laboratory
+Bronson Animal Disease Diagnostic Laboratory
+Athens Veterinary Diagnostic Laboratory
+Indiana Animal Disease Diagnostic Laboratory
+Kansas State Veterinary Diagnostic Lab
+University of Kentucky, Veterinary Diagnostic Laboratory
+Louisiana Animal Disease Diagnostic Laboratory
+Michigan State University Veterinary Diagnostic Laboratory
+University of Minnesota Veterinary Diagnostic Laboratory
+University of Missouri Veterinary Medical Diagnostic Laboratory
+Mississippi Veterinary Research &amp; Diagnostic Laboratory System
+Nebraska Veterinary Diagnostic Center
+Cornell University Animal Health Diagnostic Center
+North Dakota Veterinary Diagnostic Lab
+Animal Disease Diagnostic Laboratory
+PADLS-Pennsylvania Veterinary Laboratory
+PADLS-University of Pennsylvania, School of Veterinary Medicine, New Bolton Center
+Animal Disease Research &amp; Diagnostics Laboratory
+Texas A&amp;M Veterinary Medical Diagnostic Laboratory
+Washington Animal Disease Diagnostic Laboratory
+Wisconsin Veterinary Diagnostic Laboratory</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Bacteriology &amp; Mycology Diagnostic Laboratory"/>
             <xs:enumeration value="California Animal Health &amp; Food Safety Laboratory System"/>

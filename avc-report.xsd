@@ -12,7 +12,7 @@ This is the open source Veterinary Diagnostic Laboratory Standard. You are free 
 
 Visit http://coreone.info/ for more information.</xs:documentation>
     </xs:annotation>
-    <xs:include schemaLocation="../common/reference_data.xsd"/>
+    <xs:include schemaLocation="common.xsd"/>
     <xs:element name="Results">
         <xs:complexType>
             <xs:sequence>

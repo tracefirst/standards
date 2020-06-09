@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://tracefirst.com/xml" xmlns="http://tracefirst.com/xml" version="0.11">
+    targetNamespace="http://www.tracefirst.com/standards"
+    xmlns="http://www.tracefirst.com/standards" version="0.11">
 
     <xs:annotation>
         <xs:documentation>(c) 2019 Trace First Inc.

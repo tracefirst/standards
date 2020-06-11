@@ -132,9 +132,7 @@ eartags.</xs:documentation>
             <xs:element name="NatlPremisesID" type="NatlPremIdType"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:attributeGroup name="MessageHeaders">
-        <xs:attribute name="State" type="USStateType" use="required"/>
-        <xs:attribute name="SendingSystem" type="SendingSystemType" use="required"/>
+    <xs:attributeGroup name="SenderReferences">
         <xs:attribute name="SendingSystemRefStr" type="xs:string"/>
         <xs:attribute name="SendingSystemRefInt" type="xs:integer"/>
     </xs:attributeGroup>

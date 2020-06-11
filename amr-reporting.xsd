@@ -16,7 +16,6 @@
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
-        <xs:attributeGroup ref="MessageHeaders"/>
         <xs:attribute name="LaboratoryName" type="LaboratoryNameType" use="required">
             <xs:annotation>
                 <xs:documentation/>
@@ -28,6 +27,7 @@
                 <xs:documentation/>
             </xs:annotation>
         </xs:attribute>
+        <xs:attributeGroup ref="SenderReferences"/>
     </xs:complexType>
     <xs:complexType name="SpecimenType">
         <xs:sequence>

@@ -15,6 +15,11 @@
                 <xs:element name="Location" type="LocationType"/>
             </xs:sequence>
             <xs:attributeGroup ref="MessageHeaders"/>
+            <xs:attributeGroup ref="SenderReferences"/>
         </xs:complexType>
     </xs:element>
+    <xs:attributeGroup name="MessageHeaders">
+        <xs:attribute name="State" type="USStateType" use="required"/>
+        <xs:attribute name="SendingSystem" type="SendingSystemType" use="required"/>
+    </xs:attributeGroup>
 </xs:schema>

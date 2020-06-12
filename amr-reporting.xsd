@@ -47,6 +47,7 @@
         <xs:attribute name="FinalDiagnosis" type="tfs:FinalDiagnosisType" use="required"/>
         <xs:attribute name="TestRefStr" type="xs:string"/>
         <xs:attribute name="TestRefInt" type="xs:integer"/>
+        <xs:attribute name="PlateType" use="required" type="tfs:PlateTypeType"/>
     </xs:complexType>
     <xs:complexType name="AMRResultType">
         <xs:attribute name="Antibiotic" type="tfs:AntibioticType" use="required"/>
@@ -272,6 +273,17 @@ Wisconsin Veterinary Diagnostic Laboratory</xs:documentation>
             <xs:enumeration value="Health Monitoring"/>
             <xs:enumeration value="Surveillance, National"/>
             <xs:enumeration value="Surveillance, Outbreak"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PlateTypeType">
+        <xs:annotation>
+            <xs:documentation>The type of plate used for the AMR assay.  Should be one of 6f, 7f, Gram Positive, or Gram Negative.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="6f"/>
+            <xs:enumeration value="7f"/>
+            <xs:enumeration value="Gram Positive"/>
+            <xs:enumeration value="Gram Negative"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

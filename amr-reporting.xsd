@@ -10,7 +10,7 @@
     </xs:element>
     <xs:complexType name="AMRReportType">
         <xs:sequence>
-            <xs:element name="Specimen" maxOccurs="unbounded" type="SpecimenType">
+            <xs:element name="AMRAssay" maxOccurs="unbounded" type="AMRAssayType">
                 <xs:annotation>
                     <xs:documentation/>
                 </xs:annotation>
@@ -29,7 +29,7 @@
         </xs:attribute>
         <xs:attributeGroup ref="SenderReferences"/>
     </xs:complexType>
-    <xs:complexType name="SpecimenType">
+    <xs:complexType name="AMRAssayType">
         <xs:sequence>
             <xs:element maxOccurs="unbounded" name="AMRResult" type="AMRResultType"> </xs:element>
             <xs:element name="TestDate" type="TimestampType"/>

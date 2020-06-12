@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.tracefirst.com/standards"
-    xmlns="http://www.tracefirst.com/standards" version="0.1">
+    xmlns:tfs="http://www.tracefirst.com/standards" version="0.1">
     <xs:include schemaLocation="common.xsd"/>
-    <xs:element name="AMRReport" type="AMRReportType">
+    <xs:element name="AMRReport" type="tfs:AMRReportType">
         <xs:annotation>
             <xs:documentation>This AMR reporting schema is based on the NAHLN AMR Pilot Surveillance Program reporting requirements.  Materials and Methods are found in the USDA APHIS VS National Animal Health Laboratory Network Antimicrobial Resistance Pilot Project Year 1 Report 2018, pg. 4.</xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:complexType name="AMRReportType">
         <xs:sequence>
-            <xs:element name="AMRAssay" maxOccurs="unbounded" type="AMRAssayType">
+            <xs:element name="AMRAssay" maxOccurs="unbounded" type="tfs:AMRAssayType">
                 <xs:annotation>
                     <xs:documentation/>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
-        <xs:attribute name="LaboratoryName" type="LaboratoryNameType" use="required">
+        <xs:attribute name="LaboratoryName" type="tfs:LaboratoryNameType" use="required">
             <xs:annotation>
                 <xs:documentation/>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="ProgramName" type="ProgramNameType" use="required">
+        <xs:attribute name="ProgramName" type="tfs:ProgramNameType" use="required">
             <xs:annotation>
                 <xs:documentation/>
             </xs:annotation>
         </xs:attribute>
-        <xs:attributeGroup ref="SenderReferences"/>
+        <xs:attributeGroup ref="tfs:SenderReferences"/>
     </xs:complexType>
     <xs:complexType name="AMRAssayType">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" name="AMRResult" type="AMRResultType"> </xs:element>
-            <xs:element name="TestDate" type="TimestampType"/>
-            <xs:element name="IsolationDate" type="TimestampType"/>
+            <xs:element maxOccurs="unbounded" name="AMRResult" type="tfs:AMRResultType"> </xs:element>
+            <xs:element name="TestDate" type="tfs:TimestampType"/>
+            <xs:element name="IsolationDate" type="tfs:TimestampType"/>
         </xs:sequence>
-        <xs:attribute name="SpecimenId" type="SpecimenIdType" use="required"/>
-        <xs:attribute name="AnimalOriginState" type="USStateType" use="required"/>
-        <xs:attribute name="AnimalSpecies" use="required" type="AnimalSpeciesType"> </xs:attribute>
-        <xs:attribute name="SourceTissue" type="SourceTissueType" use="required"/>
-        <xs:attribute name="ReasonForSubmitting" type="ReasonForSubmittingType" use="required"/>
-        <xs:attribute name="OrganismIsolated" type="OrganismIsolatedType" use="required"/>
-        <xs:attribute name="FinalDiagnosis" type="FinalDiagnosisType" use="required"/>
+        <xs:attribute name="SpecimenId" type="tfs:SpecimenIdType" use="required"/>
+        <xs:attribute name="AnimalOriginState" type="tfs:USStateType" use="required"/>
+        <xs:attribute name="AnimalSpecies" use="required" type="tfs:AnimalSpeciesType"> </xs:attribute>
+        <xs:attribute name="SourceTissue" type="tfs:SourceTissueType" use="required"/>
+        <xs:attribute name="ReasonForSubmitting" type="tfs:ReasonForSubmittingType" use="required"/>
+        <xs:attribute name="OrganismIsolated" type="tfs:OrganismIsolatedType" use="required"/>
+        <xs:attribute name="FinalDiagnosis" type="tfs:FinalDiagnosisType" use="required"/>
         <xs:attribute name="TestRefStr" type="xs:string"/>
         <xs:attribute name="TestRefInt" type="xs:integer"/>
     </xs:complexType>
     <xs:complexType name="AMRResultType">
-        <xs:attribute name="Antibiotic" type="AntibioticType" use="required"/>
-        <xs:attribute name="MICValue" type="MICValueType" use="required"/>
-        <xs:attribute name="MICModifier" type="MICModifierType"/>
-        <xs:attribute name="Interpretation" type="MICInterpretationType" use="required">
+        <xs:attribute name="Antibiotic" type="tfs:AntibioticType" use="required"/>
+        <xs:attribute name="MICValue" type="tfs:MICValueType" use="required"/>
+        <xs:attribute name="MICModifier" type="tfs:MICModifierType"/>
+        <xs:attribute name="Interpretation" type="tfs:MICInterpretationType" use="required">
         </xs:attribute>
     </xs:complexType>
     <xs:simpleType name="AnimalSpeciesType">

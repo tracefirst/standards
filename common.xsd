@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.tracefirst.com/standards"
-    xmlns="http://www.tracefirst.com/standards"
+    xmlns:tfs="http://www.tracefirst.com/standards"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
 
     <xs:complexType name="AnimalTagType">
         <xs:choice>
-            <xs:element name="AINTag" type="AINtagType"/>
-            <xs:element name="NUESTag" type="NUEStagType"/>
+            <xs:element name="AINTag" type="tfs:AINtagType"/>
+            <xs:element name="NUESTag" type="tfs:NUEStagType"/>
             <xs:element name="OtherTag">
                 <xs:annotation>
                     <xs:documentation>You should only use this option if you know that the string you are passing is an animal tag number and you are certain it is not one of the specific tag types this schema allows.</xs:documentation>
@@ -129,7 +129,7 @@ eartags.</xs:documentation>
     </xs:complexType>
     <xs:complexType name="LocationType">
         <xs:sequence>
-            <xs:element name="NatlPremisesID" type="NatlPremIdType"/>
+            <xs:element name="NatlPremisesID" type="tfs:NatlPremIdType"/>
         </xs:sequence>
     </xs:complexType>
     <xs:attributeGroup name="SenderReferences">

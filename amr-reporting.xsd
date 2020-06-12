@@ -7,6 +7,10 @@
         <xs:annotation>
             <xs:documentation>This AMR reporting schema is based on the NAHLN AMR Pilot Surveillance Program reporting requirements.  Materials and Methods are found in the USDA APHIS VS National Animal Health Laboratory Network Antimicrobial Resistance Pilot Project Year 1 Report 2018, pg. 4.</xs:documentation>
         </xs:annotation>
+        <xs:unique name="UniqueSpecimenId">
+            <xs:selector xpath="tfs:AMRAssay"/>
+            <xs:field xpath="@SpecimenId"/>
+        </xs:unique>
     </xs:element>
     <xs:complexType name="AMRReportType">
         <xs:sequence>

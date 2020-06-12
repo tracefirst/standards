@@ -34,6 +34,7 @@
             <xs:element name="TestDate" type="TimestampType"/>
             <xs:element name="IsolationDate" type="TimestampType"/>
         </xs:sequence>
+        <xs:attribute name="SpecimenId" type="SpecimenIdType" use="required"/>
         <xs:attribute name="AnimalOriginState" type="USStateType" use="required"/>
         <xs:attribute name="AnimalSpecies" use="required" type="AnimalSpeciesType"> </xs:attribute>
         <xs:attribute name="SourceTissue" type="SourceTissueType" use="required"/>
@@ -251,6 +252,14 @@ Wisconsin Veterinary Diagnostic Laboratory</xs:documentation>
             <xs:enumeration value="Texas A&amp;M Veterinary Medical Diagnostic Laboratory"/>
             <xs:enumeration value="Washington Animal Disease Diagnostic Laboratory"/>
             <xs:enumeration value="Wisconsin Veterinary Diagnostic Laboratory"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SpecimenIdType">
+        <xs:annotation>
+            <xs:documentation>A unique specimen ID of the form TX77840PPY20002</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}[0-9]{5}[A-Z]{3}[0-9]{5}"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="ReasonForSubmittingType">

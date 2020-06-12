@@ -160,7 +160,7 @@ Dogs: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1
             <xs:enumeration value="Oxacillin"/>
             <xs:enumeration value="Oxytetracycline"/>
             <xs:enumeration value="Penicillin"/>
-            <xs:enumeration value="Piperacillin/tazobactam"/>
+            <xs:enumeration value="Piperacillin/Tazobactam"/>
             <xs:enumeration value="Pradofloxacin"/>
             <xs:enumeration value="Rifampin"/>
             <xs:enumeration value="Spectinomycin"/>
@@ -173,7 +173,7 @@ Dogs: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1
             <xs:enumeration value="Ticarcillin/Clavulanic acid"/>
             <xs:enumeration value="Tildipirosin"/>
             <xs:enumeration value="Tilmicosin"/>
-            <xs:enumeration value="Trimethoprim/sulfamethoxazole"/>
+            <xs:enumeration value="Trimethoprim/Sulfamethoxazole"/>
             <xs:enumeration value="Tulathromycin"/>
             <xs:enumeration value="Tylosin tartrate"/>
             <xs:enumeration value="Vancomycin"/>

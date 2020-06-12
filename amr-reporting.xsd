@@ -21,7 +21,6 @@
                 <xs:documentation/>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="ReasonForSubmitting" type="ReasonForSubmittingType" use="required"/>
         <xs:attribute name="ProgramName" type="ProgramNameType" use="required">
             <xs:annotation>
                 <xs:documentation/>
@@ -38,6 +37,7 @@
         <xs:attribute name="AnimalOriginState" type="USStateType" use="required"/>
         <xs:attribute name="AnimalSpecies" use="required" type="AnimalSpeciesType"> </xs:attribute>
         <xs:attribute name="SourceTissue" type="SourceTissueType" use="required"/>
+        <xs:attribute name="ReasonForSubmitting" type="ReasonForSubmittingType" use="required"/>
         <xs:attribute name="OrganismIsolated" type="OrganismIsolatedType" use="required"/>
         <xs:attribute name="FinalDiagnosis" type="FinalDiagnosisType" use="required"/>
         <xs:attribute name="TestRefStr" type="xs:string"/>

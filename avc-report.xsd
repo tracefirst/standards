@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.tracefirst.com/standards"
+    xmlns="http://www.tracefirst.com/standards" version="0.11">
+
+    <xs:annotation>
+        <xs:documentation>(c) 2019 Trace First Inc.
+2850 McClelland Dr, Ste 2700
+Fort Collins CO 80525
+
+This is the open source Veterinary Diagnostic Laboratory Standard. You are free to use this standard but you must not amend it in any way.
+
+Visit http://coreone.info/ for more information.</xs:documentation>
+    </xs:annotation>
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:element name="Results">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="1" name="Test">
+                    <xs:complexType>
+                        <xs:attribute name="SubmittingLab" type="xs:string"/>
+                        <xs:attribute name="TestDate" type="xs:date" use="required">
+                            <xs:annotation>
+                                <xs:documentation>This should be the date on which the samples were tested. If this is not known in your LIMS, you should select the closest alternative.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="SubmitterState" use="required" type="USStateType">
+                            <xs:annotation>
+                                <xs:documentation>This should be the two-letter State abbreviation</xs:documentation>
+                            </xs:annotation>
+
+                        </xs:attribute>
+
+
+                        <xs:attribute name="SubmitterCounty" type="USCountyType"/>
+                        <xs:attribute name="SubmitterZipcode" type="xs:string"/>
+                        <xs:attribute name="Breed" use="required">
+                            <xs:annotation>
+                                <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>
+                            </xs:annotation>
+
+                        </xs:attribute>
+                        <xs:attribute name="SampleType" use="required" type="xs:string"/>
+                        <xs:attribute name="Age" type="xs:integer"/>
+                        <xs:attribute name="ProductionType" type="xs:string"/>
+                        <xs:attribute name="TestCode" use="required">
+                            <xs:annotation>
+                                <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Bovine Coronavirus PCR"/>
+                                    <xs:enumeration value="Bovine Herpesvirus-1 PCR"/>
+                                    <xs:enumeration value="Bovine Respiratory Synctial Virus PCR"/>
+                                    <xs:enumeration value="Bovine Rotavirus PCR"/>
+                                    <xs:enumeration value="Bovine Viral Diarrhea Virus PCR"/>
+                                    <xs:enumeration value="Cryptosporidium spp PCR"/>
+                                    <xs:enumeration value="Histophilus somni PCR"/>
+                                    <xs:enumeration value="Mannheimia haemolytica PCR"/>
+                                    <xs:enumeration value="Mycoplasma spp PCR"/>
+                                    <xs:enumeration value="Pasteurella multocida PCR"/>
+                                    <xs:enumeration value="Mycobacterium paratuberculosis PCR"/>
+                                    <xs:enumeration value="Blackleg Disease FA"/>
+                                    <xs:enumeration value="Anaplasma marginale PCR"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="Positive" use="optional" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>This is a Positive result for the test/date this element relates to.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="Negative" use="optional" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>This is a Negative result for the test/date this element relates to.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="Suspect" use="optional" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>This is a Suspect result for the test/date this element relates to.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute default="0" name="Other" use="optional" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>This is a test result that did not return a Positive, Negative or Suspect for the test/date this element relates to.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+
+            <xs:attribute name="version" type="xs:float" use="required">
+                <xs:annotation>
+                    <xs:documentation>Consult https://coreone.info/ for more information on published versions.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

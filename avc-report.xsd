@@ -42,7 +42,7 @@ Visit http://coreone.info/ for more information.</xs:documentation>
                         </xs:attribute>
                         <xs:attribute name="SampleType" use="required" type="xs:string"/>
                         <xs:attribute name="Age" type="xs:integer"/>
-                        <xs:attribute name="ProductionType" type="xs:string"/>
+                        <xs:attribute name="ProductionType" type="ProductionTypeType"/>
                         <xs:attribute name="TestCode" use="required">
                             <xs:annotation>
                                 <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>
@@ -96,4 +96,13 @@ Visit http://coreone.info/ for more information.</xs:documentation>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
+    <xs:simpleType name="ProductionTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Beef"/>
+            <xs:enumeration value="Dairy"/>
+            <xs:enumeration value="Hobby/Exhibition"/>
+            <xs:enumeration value="Research"/>
+            <xs:enumeration value="Unspecified"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

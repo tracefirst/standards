@@ -71,25 +71,18 @@ Visit http://coreone.info/ for more information.</xs:documentation>
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
-                        <xs:attribute default="0" name="Positive" use="optional" type="xs:integer">
+                        <xs:attribute name="ResultInterpretation">
                             <xs:annotation>
-                                <xs:documentation>This is a Positive result for the test/date this element relates to.</xs:documentation>
+                                <xs:documentation>The interpretation of the result for the test and date this element represents</xs:documentation>
                             </xs:annotation>
-                        </xs:attribute>
-                        <xs:attribute default="0" name="Negative" use="optional" type="xs:integer">
-                            <xs:annotation>
-                                <xs:documentation>This is a Negative result for the test/date this element relates to.</xs:documentation>
-                            </xs:annotation>
-                        </xs:attribute>
-                        <xs:attribute default="0" name="Suspect" use="optional" type="xs:integer">
-                            <xs:annotation>
-                                <xs:documentation>This is a Suspect result for the test/date this element relates to.</xs:documentation>
-                            </xs:annotation>
-                        </xs:attribute>
-                        <xs:attribute default="0" name="Other" use="optional" type="xs:integer">
-                            <xs:annotation>
-                                <xs:documentation>This is a test result that did not return a Positive, Negative or Suspect for the test/date this element relates to.</xs:documentation>
-                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Positive"/>
+                                    <xs:enumeration value="Negative"/>
+                                    <xs:enumeration value="Suspect"/>
+                                    <xs:enumeration value="Other"/>
+                                </xs:restriction>
+                            </xs:simpleType>
                         </xs:attribute>
                     </xs:complexType>
                 </xs:element>

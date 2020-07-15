@@ -41,7 +41,7 @@ Visit http://coreone.info/ for more information.</xs:documentation>
 
                         </xs:attribute>
                         <xs:attribute name="SampleType" use="required" type="xs:string"/>
-                        <xs:attribute name="Age" type="xs:integer"/>
+                        <xs:attribute name="Age" type="xs:nonNegativeInteger"/>
                         <xs:attribute name="ProductionType" type="ProductionTypeType"/>
                         <xs:attribute name="TestCode" use="required">
                             <xs:annotation>

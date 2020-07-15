@@ -33,7 +33,13 @@ Visit http://coreone.info/ for more information.</xs:documentation>
 
 
                         <xs:attribute name="SubmitterCounty" type="USCountyType"/>
-                        <xs:attribute name="SubmitterZipcode" type="xs:string"/>
+                        <xs:attribute name="SubmitterZipcode">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="[0-9]{5}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
                         <xs:attribute name="Breed" use="required" type="xs:string">
                             <xs:annotation>
                                 <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>

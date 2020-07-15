@@ -88,10 +88,15 @@ Visit http://coreone.info/ for more information.</xs:documentation>
                 </xs:element>
             </xs:sequence>
 
-            <xs:attribute name="version" type="xs:float" use="required">
+            <xs:attribute name="version" use="required">
                 <xs:annotation>
                     <xs:documentation>Consult https://coreone.info/ for more information on published versions.</xs:documentation>
                 </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0-9]+\.)+[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
             </xs:attribute>
         </xs:complexType>
     </xs:element>

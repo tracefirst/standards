@@ -33,16 +33,22 @@ Visit http://coreone.info/ for more information.</xs:documentation>
 
 
                         <xs:attribute name="SubmitterCounty" type="USCountyType"/>
-                        <xs:attribute name="SubmitterZipcode" type="xs:string"/>
-                        <xs:attribute name="Breed" use="required">
+                        <xs:attribute name="SubmitterZipcode">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="[0-9]{5}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="Breed" use="required" type="xs:string">
                             <xs:annotation>
                                 <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>
                             </xs:annotation>
 
                         </xs:attribute>
                         <xs:attribute name="SampleType" use="required" type="xs:string"/>
-                        <xs:attribute name="Age" type="xs:integer"/>
-                        <xs:attribute name="ProductionType" type="xs:string"/>
+                        <xs:attribute name="Age" type="xs:nonNegativeInteger"/>
+                        <xs:attribute name="ProductionType" type="ProductionTypeType"/>
                         <xs:attribute name="TestCode" use="required">
                             <xs:annotation>
                                 <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>
@@ -65,35 +71,42 @@ Visit http://coreone.info/ for more information.</xs:documentation>
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
-                        <xs:attribute default="0" name="Positive" use="optional" type="xs:integer">
+                        <xs:attribute name="ResultInterpretation">
                             <xs:annotation>
-                                <xs:documentation>This is a Positive result for the test/date this element relates to.</xs:documentation>
+                                <xs:documentation>The interpretation of the result for the test and date this element represents</xs:documentation>
                             </xs:annotation>
-                        </xs:attribute>
-                        <xs:attribute default="0" name="Negative" use="optional" type="xs:integer">
-                            <xs:annotation>
-                                <xs:documentation>This is a Negative result for the test/date this element relates to.</xs:documentation>
-                            </xs:annotation>
-                        </xs:attribute>
-                        <xs:attribute default="0" name="Suspect" use="optional" type="xs:integer">
-                            <xs:annotation>
-                                <xs:documentation>This is a Suspect result for the test/date this element relates to.</xs:documentation>
-                            </xs:annotation>
-                        </xs:attribute>
-                        <xs:attribute default="0" name="Other" use="optional" type="xs:integer">
-                            <xs:annotation>
-                                <xs:documentation>This is a test result that did not return a Positive, Negative or Suspect for the test/date this element relates to.</xs:documentation>
-                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Positive"/>
+                                    <xs:enumeration value="Negative"/>
+                                    <xs:enumeration value="Suspect"/>
+                                    <xs:enumeration value="Other"/>
+                                </xs:restriction>
+                            </xs:simpleType>
                         </xs:attribute>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
 
-            <xs:attribute name="version" type="xs:float" use="required">
+            <xs:attribute name="version" use="required">
                 <xs:annotation>
                     <xs:documentation>Consult https://coreone.info/ for more information on published versions.</xs:documentation>
                 </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0-9]+\.)+[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
+    <xs:simpleType name="ProductionTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Beef"/>
+            <xs:enumeration value="Dairy"/>
+            <xs:enumeration value="Hobby/Exhibition"/>
+            <xs:enumeration value="Research"/>
+            <xs:enumeration value="Unspecified"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

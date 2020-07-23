@@ -34,9 +34,10 @@
     </xs:complexType>
     <xs:complexType name="AMRAssayType">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" name="AMRResult" type="tfs:AMRResultType"> </xs:element>
-            <xs:element name="TestDate" type="tfs:TimestampType"/>
             <xs:element name="IsolationDate" type="tfs:TimestampType"/>
+            <xs:element name="TestDate" type="tfs:TimestampType"/>
+            <xs:element maxOccurs="unbounded" name="AMRResult" type="tfs:AMRResultType">
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="SpecimenId" type="tfs:SpecimenIdType" use="required"/>
         <xs:attribute name="AnimalOriginState" type="tfs:USStateType" use="required"/>

@@ -34,9 +34,10 @@
     </xs:complexType>
     <xs:complexType name="AMRAssayType">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" name="AMRResult" type="tfs:AMRResultType"> </xs:element>
-            <xs:element name="TestDate" type="tfs:TimestampType"/>
             <xs:element name="IsolationDate" type="tfs:TimestampType"/>
+            <xs:element name="TestDate" type="tfs:TimestampType"/>
+            <xs:element maxOccurs="unbounded" name="AMRResult" type="tfs:AMRResultType">
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="SpecimenId" type="tfs:SpecimenIdType" use="required"/>
         <xs:attribute name="AnimalOriginState" type="tfs:USStateType" use="required"/>
@@ -75,11 +76,7 @@
         <xs:annotation>
             <xs:documentation>Epidemiological data collected inlcudes a specimen or source tissue the isolate was recovered from (for example, oropharyngeal swab, lung tissue or feces).</xs:documentation>
         </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Feces"/>
-            <xs:enumeration value="Urine"/>
-            <xs:enumeration value="Skin"/>
-        </xs:restriction>
+        <xs:restriction base="xs:string"/>
     </xs:simpleType>
     <xs:simpleType name="MICInterpretationType">
         <xs:annotation>
@@ -115,11 +112,7 @@
         <xs:annotation>
             <xs:documentation>Epidemiological data collected includes the clinical signs associated with the ssubmission or the final diagnosis associated with the case (for example diarrhea, sepsis, pneumonia, wound, cystitis).</xs:documentation>
         </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Cystitis"/>
-            <xs:enumeration value="Dermatitis"/>
-            <xs:enumeration value="Enteritis"/>
-        </xs:restriction>
+        <xs:restriction base="xs:string"> </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="AntibioticType">
         <xs:annotation>
@@ -277,13 +270,21 @@ Wisconsin Veterinary Diagnostic Laboratory</xs:documentation>
     </xs:simpleType>
     <xs:simpleType name="PlateTypeType">
         <xs:annotation>
-            <xs:documentation>The type of plate used for the AMR assay.  Should be one of 6f, 7f, Gram Positive, or Gram Negative.</xs:documentation>
+            <xs:documentation>Commercially available Sensititre microdilution plates are used for testing the selected organisms (USDA APHIS VS, NAHLN AMR Pilot, Year 1 report, 2018) Appropriate plates to test each species are used as follows:
+Cattle: E. coli BOPO6F or 7F; Salmonella BOPO6F or 7F; M. haemolytica BOPO6F or 7F
+Swine: E. coli BOPO6F or 7F; Salmonella BOPO6F or 7F
+Poultry: E. coli Avian 1F; Salmonella Avian 1F
+Horses: E. coli Equine 1F; Salmonella Equine 1F
+Cats: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1F
+Dogs: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1F</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="6f"/>
-            <xs:enumeration value="7f"/>
-            <xs:enumeration value="Gram Positive"/>
-            <xs:enumeration value="Gram Negative"/>
+            <xs:enumeration value="BOPO6F"/>
+            <xs:enumeration value="BOPO7F"/>
+            <xs:enumeration value="Avian1F"/>
+            <xs:enumeration value="Equin1F"/>
+            <xs:enumeration value="COMPGN1F"/>
+            <xs:enumeration value="Companion GP1F"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

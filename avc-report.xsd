@@ -42,7 +42,7 @@ Visit http://coreone.info/ for more information.</xs:documentation>
                         </xs:attribute>
                         <xs:attribute name="Breed" use="required" type="xs:string">
                             <xs:annotation>
-                                <xs:documentation>This is required - consult https://coreone.info/ for more information</xs:documentation>
+                                <xs:documentation/>
                             </xs:annotation>
 
                         </xs:attribute>

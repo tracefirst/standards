@@ -270,13 +270,21 @@ Wisconsin Veterinary Diagnostic Laboratory</xs:documentation>
     </xs:simpleType>
     <xs:simpleType name="PlateTypeType">
         <xs:annotation>
-            <xs:documentation>The type of plate used for the AMR assay.  Should be one of 6f, 7f, Gram Positive, or Gram Negative.</xs:documentation>
+            <xs:documentation>Commercially available Sensititre microdilution plates are used for testing the selected organisms (USDA APHIS VS, NAHLN AMR Pilot, Year 1 report, 2018) Appropriate plates to test each species are used as follows:
+Cattle: E. coli BOPO6F or 7F; Salmonella BOPO6F or 7F; M. haemolytica BOPO6F or 7F
+Swine: E. coli BOPO6F or 7F; Salmonella BOPO6F or 7F
+Poultry: E. coli Avian 1F; Salmonella Avian 1F
+Horses: E. coli Equine 1F; Salmonella Equine 1F
+Cats: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1F
+Dogs: E. coli COMPGN1F; Salmonella COMPGN1F; St. intermedius group Companion GP1F</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="6f"/>
-            <xs:enumeration value="7f"/>
-            <xs:enumeration value="Gram Positive"/>
-            <xs:enumeration value="Gram Negative"/>
+            <xs:enumeration value="BOPO6F"/>
+            <xs:enumeration value="BOPO7F"/>
+            <xs:enumeration value="Avian1F"/>
+            <xs:enumeration value="Equin1F"/>
+            <xs:enumeration value="COMPGN1F"/>
+            <xs:enumeration value="Companion GP1F"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

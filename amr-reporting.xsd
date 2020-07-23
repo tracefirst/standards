@@ -112,11 +112,7 @@
         <xs:annotation>
             <xs:documentation>Epidemiological data collected includes the clinical signs associated with the ssubmission or the final diagnosis associated with the case (for example diarrhea, sepsis, pneumonia, wound, cystitis).</xs:documentation>
         </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Cystitis"/>
-            <xs:enumeration value="Dermatitis"/>
-            <xs:enumeration value="Enteritis"/>
-        </xs:restriction>
+        <xs:restriction base="xs:string"> </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="AntibioticType">
         <xs:annotation>

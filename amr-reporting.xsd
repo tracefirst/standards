@@ -76,11 +76,7 @@
         <xs:annotation>
             <xs:documentation>Epidemiological data collected inlcudes a specimen or source tissue the isolate was recovered from (for example, oropharyngeal swab, lung tissue or feces).</xs:documentation>
         </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Feces"/>
-            <xs:enumeration value="Urine"/>
-            <xs:enumeration value="Skin"/>
-        </xs:restriction>
+        <xs:restriction base="xs:string"/>
     </xs:simpleType>
     <xs:simpleType name="MICInterpretationType">
         <xs:annotation>

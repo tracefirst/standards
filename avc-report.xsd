@@ -77,6 +77,8 @@ Visit http://coreone.info/ for more information.</xs:documentation>
                             </xs:annotation>
                             <xs:simpleType>
                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Detected"/>
+                                    <xs:enumeration value="Not Detected"/>
                                     <xs:enumeration value="Positive"/>
                                     <xs:enumeration value="Negative"/>
                                     <xs:enumeration value="Suspect"/>
